@@ -3,6 +3,6 @@ while read line ; do
         echo "$line" | grep "error_message"
         if [ $? = 0 ]
         then
-                sh ./pagerduty.sh
+                sh ./create_alert.sh
         fi
 done
