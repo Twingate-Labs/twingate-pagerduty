@@ -20,4 +20,4 @@ Once the service is created, select Integration -> Events API V2
 
 Modify `twingate_pagerduty.sh`, replace `xxxxx` with Integration Key which can be found within the Events API V2 integration
 
-Execute `twingate_pagerduty.sh` on the server where connector is installed, `nohup twingate_pagerduty.sh > twingate_pagerduty.log &`
+Execute `twingate_pagerduty.sh` on the server where connector is installed, `nohup bash twingate_pagerduty.sh > twingate_pagerduty.log &`
