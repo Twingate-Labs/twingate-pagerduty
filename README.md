@@ -14,10 +14,24 @@ Enable Twingate Connector Analytic Log
 
 Download the latest [twingate_pagerduty.sh](https://github.com/Twingate-Labs/pagerduty/blob/main/twingate_pagerduty.sh)
 
-Create new service in PagerDuty UI
+1. Create new service in PagerDuty UI
 
-Once the service is created, select Integration -> Events API V2
+2. Once the service is created, select Integration -> Custom Event Transformer
 
-Modify `twingate_pagerduty.sh`, replace `xxxxx` with Integration Key which can be found within the Events API V2 integration
+3. Name the Custom Event Transformer as Twingate Event Transformer
 
-Execute `twingate_pagerduty.sh` on the server where connector is installed, `nohup bash twingate_pagerduty.sh > twingate_pagerduty.log &`
+4. Paste the block below into the Twingate Event Transformer
+```
+    var normalized_event = {
+      event_type: PD.Trigger,
+      description: `Twingate Analytics: ${JSON.parse(PD.inputRequest.rawBody).connection.error_message}`,
+      details: JSON.stringify(JSON.parse(PD.inputRequest.rawBody), null, 4)
+    };
+
+    PD.emitGenericEvents([normalized_event]);
+```
+
+
+5. Modify `twingate_pagerduty.sh`, replace `xxxxx` with Integration Key which can be found within the Twingate Event Transformer integration
+
+6. Execute `twingate_pagerduty.sh` on the server where connector is installed, `nohup bash twingate_pagerduty.sh > twingate_pagerduty.log &`
