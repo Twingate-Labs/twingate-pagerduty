@@ -39,7 +39,7 @@ sudo echo -e 'PAGERDUTY_INTEGRATION_URL={Your Integration URL Here}' > /etc/twin
 
 Execute following commands to create monitor bash script and service file
 ```
-sudo echo -e '#!/bin/bash\nCONTENT_TYPE="application/json"\n. /etc/twingate/twingate-pagerduty.conf\njournalctl -u twingate-connector -f -n 0 | \\\nwhile read line ; do\n        echo "$line" | grep "error_message"\n        if [ $? = 0 ]\n        then\n                log="${line##*ANALYTICS }"\n                curl -H ${CONTENT_TYPE} -X POST -d "$log" ${PAGERDUTY_INTEGRATION_URL}\n        fi\ndone' > /usr/bin/twingate-pagerduty.sh
+sudo echo -e '#!/bin/bash\nCONTENT_TYPE="application/json"\n. /etc/twingate/twingate-pagerduty.conf\njournalctl -u twingate-connector -f -n 0 | \\\nwhile read line ; do\n        echo "$line" | grep \"error_message\"\n        if [ $? = 0 ]\n        then\n                log="${line##*ANALYTICS }"\n                curl -H ${CONTENT_TYPE} -X POST -d "$log" ${PAGERDUTY_INTEGRATION_URL}\n        fi\ndone' > /usr/bin/twingate-pagerduty.sh
 sudo chmod +x /usr/bin/twingate-pagerduty.sh
 sudo echo -e '[Unit]\nDescription=Twingate PagerDuty Monitor Integration	\nAfter=network-online.target\n\n[Service]\nType=simple\nExecStart=/usr/bin/twingate-pagerduty.sh\n\n[Install]\nWantedBy=multi-user.target' > /etc/systemd/system/twingate-pagerduty.service
 sudo systemctl daemon-reload 
