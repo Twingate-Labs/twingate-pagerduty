@@ -1,0 +1,11 @@
+[Unit]
+Description=Twingate PagerDuty Monitor Integration
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/twingate-pagerduty.sh
+
+[Install]
+WantedBy=multi-user.target
+
