@@ -17,7 +17,7 @@
 
 # Support
 
-If you need help with this integration, please open an issue at the [Twingate Labs - Twingate PagerDuty](https://github.com/Twingate-Labs/twingate-pagerduty) GitHub repository.
+If you need help with this integration, please open an issue at the [Twingate Labs - Twingate PagerDuty](https://github.com/Twingate-Labs/twingate-pagerduty/issues) GitHub repository.
 
 # Integration Walkthrough
 
