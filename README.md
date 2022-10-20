@@ -1,4 +1,4 @@
-# PagerDuty + ***Twingate*** Integration Benefits
+# PagerDuty + [***Twingate***](https://www.twingate.com/?utm_source=pagerduty&utm_medium=partner&utm_campaign=integrations) Integration Benefits
 
 * Notify on-call responders based on the errors reported by Twingate
 * Monitor the availability of Twingate resources
