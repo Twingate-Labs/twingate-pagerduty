@@ -28,7 +28,7 @@ If you need help with this integration, please open an issue at the [Twingate La
 4. Click the **Add Integration** button to save your new integration. You will be redirected to the Integrations tab for your service.
 5. An **Integration Key** will be generated on this screen. Keep this key saved in a safe place, as it will be used when you configure the integration with Twingate in the next section.
 
-## In Twingate Connector Server
+## On Twingate Connector Server
 Enable Twingate connector analytics logging:
 -   Add the line line `TWINGATE_LOG_ANALYTICS=v1` in file `/etc/twingate/connector.conf`
 -   Restart Twingate Connector `sudo service twingate-connector restart`
